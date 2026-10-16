@@ -1,0 +1,16 @@
+# Ignore binary release archives and build packages
+*.apk
+*.aab
+*.zip
+*.7z
+*.rar
+*.tar.gz
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files and logs
+*.tmp
+*.log

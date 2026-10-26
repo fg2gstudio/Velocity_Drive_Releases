@@ -105,6 +105,7 @@ if (-not $env:GH_TOKEN -and -not $env:GITHUB_TOKEN) {
 # 4. Prepare Release Notes if not provided
 $cleanupNotes = $false
 if (-not $NotesPath -or -not (Test-Path $NotesPath)) {
+    $bt = [char]96
     $defaultNotes = @"
 Official $Title release for Android devices.
 
@@ -116,13 +117,13 @@ Official $Title release for Android devices.
 - **Primary Binary:** $apkFilename
 - **Permanent Latest Asset:** VelocityDrive-latest.apk
 - **Target Platform:** Android 8.0+ (ARM64-v8a)
-- **File Size:** ~$sizeMB MB (`$sizeBytes` bytes)
-- **SHA-256 Checksum:** `$hash`
+- **File Size:** ~$sizeMB MB (${bt}$sizeBytes${bt} bytes)
+- **SHA-256 Checksum:** ${bt}$hash${bt}
 
 ### Installation:
-1. Download ``$apkFilename`` or ``VelocityDrive-latest.apk`` to your Android device.
+1. Download ${bt}$apkFilename${bt} or ${bt}VelocityDrive-latest.apk${bt} to your Android device.
 2. In your device settings, enable **Install unknown apps** for your browser or file manager.
-3. Open the downloaded ``.apk`` file and tap **Install**.
+3. Open the downloaded ${bt}.apk${bt} file and tap **Install**.
 4. Launch Velocity Drive.
 "@
     $NotesPath = Join-Path $env:TEMP "release_notes_$Tag.md"

@@ -6,7 +6,7 @@
     enabling the permanent direct download link:
     https://github.com/fg2gstudio/Velocity_Drive_Releases/releases/latest/download/VelocityDrive-latest.apk
 .EXAMPLE
-    .\scripts\publish-release.ps1 -Tag "v5.1.42" -Title "Velocity Drive Alpha v5.1.42 (Build 42)" -ApkPath "VelocityDrive-v5.1-alpha-bv42.apk"
+    .\scripts\publish-release.ps1 -Tag "v5.1.43" -Title "Velocity Drive Alpha v5.1.43 (Build 43)" -ApkPath "VelocityDrive-v5.1-alpha-bv43.apk" -Changelog "- Bug fixes and leaderboard improvements"
     .\scripts\publish-release.ps1 # Automatically detects latest APK in repository root
 #>
 param(
@@ -17,6 +17,8 @@ param(
     [string]$ApkPath,
 
     [string]$NotesPath,
+
+    [string]$Changelog,
 
     [string]$Repo = "fg2gstudio/Velocity_Drive_Releases"
 )
@@ -106,8 +108,18 @@ if (-not $env:GH_TOKEN -and -not $env:GITHUB_TOKEN) {
 $cleanupNotes = $false
 if (-not $NotesPath -or -not (Test-Path $NotesPath)) {
     $bt = [char]96
+    $changelogSection = ""
+    if ($Changelog) {
+        $changelogSection = @"
+
+
+### What's New:
+$Changelog
+"@
+    }
+
     $defaultNotes = @"
-Official $Title release for Android devices.
+Official $Title release for Android devices.$changelogSection
 
 ### Downloads:
 - **Direct Download (Latest Link):** [VelocityDrive-latest.apk](https://github.com/$Repo/releases/latest/download/VelocityDrive-latest.apk)

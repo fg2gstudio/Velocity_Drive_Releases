@@ -131,8 +131,10 @@ Official $Title release for Android devices.
 }
 
 # 5. Check if release already exists
-$releaseExists = & $gh release view $Tag --repo $Repo 2>$null
-if ($LASTEXITCODE -eq 0) {
+$existingReleases = try { & $gh release list --repo $Repo --limit 100 2>$null } catch { @() }
+$releaseExists = ($existingReleases | Where-Object { $_ -match "\b$Tag\b" })
+
+if ($releaseExists) {
     Write-Host "Release $Tag already exists. Uploading dual assets with --clobber..." -ForegroundColor Yellow
     & $gh release upload $Tag $ApkPath $latestApkPath --clobber --repo $Repo
 } else {

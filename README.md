@@ -13,15 +13,18 @@ Download the latest release build for Android:
 
 - 🚀 **Direct Download (Permanent Latest):** [VelocityDrive-latest.apk](https://github.com/fg2gstudio/Velocity_Drive_Releases/releases/latest/download/VelocityDrive-latest.apk)
   > *Always points to the newest Android release build without version-specific URL changes.*
-- 📦 **Current Versioned Build (v5.0.41):** [VelocityDrive_v5_0-alpha_bv41.apk](https://github.com/fg2gstudio/Velocity_Drive_Releases/releases/download/v5.0.41/VelocityDrive_v5_0-alpha_bv41.apk) (~313 MB)
+- 📦 **Current Versioned Build (v5.1.42):** [VelocityDrive-v5.1-alpha-bv42.apk](https://github.com/fg2gstudio/Velocity_Drive_Releases/releases/download/v5.1.42/VelocityDrive-v5.1-alpha-bv42.apk) (~283 MB)
 - 📋 **All Releases:** [GitHub Releases Page](https://github.com/fg2gstudio/Velocity_Drive_Releases/releases)
+
+### Previous Builds Archive
+- 📦 **v5.0.41 (Build 41):** [VelocityDrive_v5_0-alpha_bv41.apk](https://github.com/fg2gstudio/Velocity_Drive_Releases/releases/download/v5.0.41/VelocityDrive_v5_0-alpha_bv41.apk) (~313 MB)
 
 ---
 
 ## Dual Asset Standard
 
 Every Velocity Drive release adheres to FG2G Studio's **Dual Asset Upload Standard**:
-1. **Versioned Archive:** `VelocityDrive_v<version>-<channel>_bv<build>.apk` (e.g., `VelocityDrive_v5_0-alpha_bv41.apk`) for immutable archival and tracking.
+1. **Versioned Archive:** `VelocityDrive_v<version>-<channel>_bv<build>.apk` or `VelocityDrive-v<version>-<channel>-bv<build>.apk` (e.g., `VelocityDrive-v5.1-alpha-bv42.apk`) for immutable archival and tracking.
 2. **Permanent Latest Alias:** `VelocityDrive-latest.apk` attached directly to the release tagged as the **Latest release**.
 
 This standard enables direct, permanent integration for automated download buttons, web portals, and Cloudflare Worker redirects via:
@@ -50,6 +53,7 @@ https://github.com/fg2gstudio/Velocity_Drive_Releases/releases/latest/download/V
 
 ## Package Verification
 You can verify the package integrity using its SHA-256 checksum:
-- **Windows (PowerShell):** `Get-FileHash -Algorithm SHA256 VelocityDrive_v5_0-alpha_bv41.apk`
-- **Linux / macOS:** `sha256sum VelocityDrive_v5_0-alpha_bv41.apk`
-- **Build 41 SHA-256:** `5658eae40bbfca8ce93cb9e5a4910ab9293a424fcb2742b9ce949fd48e7f8f73`
+- **Windows (PowerShell):** `Get-FileHash -Algorithm SHA256 VelocityDrive-v5.1-alpha-bv42.apk`
+- **Linux / macOS:** `sha256sum VelocityDrive-v5.1-alpha-bv42.apk`
+- **Build 42 SHA-256:** `0ca259c0722c318309efd5cbb052a879d2d96bf9444a3af19a75c4f254a44842`
+- **Build 41 SHA-256 (Archived):** `5658eae40bbfca8ce93cb9e5a4910ab9293a424fcb2742b9ce949fd48e7f8f73`

@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       tag_name:
-        description: 'Release Tag (e.g., v5.0.41)'
+        description: 'Release Tag (e.g., v5.1.42)'
         required: true
-        default: 'v5.0.41'
+        default: 'v5.1.42'
       release_name:
         description: 'Release Title'
         required: false
@@ -33,7 +33,7 @@ jobs:
       - name: Prepare Dual Release Assets
         run: |
           echo "Scanning for Android APK release assets..."
-          VERSIONED_APK=$(find . -maxdepth 1 -name "VelocityDrive*.apk" ! -name "VelocityDrive-latest.apk" | head -n 1)
+          VERSIONED_APK=$(find . -maxdepth 1 \( -name "VelocityDrive*.apk" -o -name "VelocityDrive-*.apk" \) ! -name "VelocityDrive-latest.apk" | sort -V | tail -n 1)
           if [ -n "$VERSIONED_APK" ] && [ -f "$VERSIONED_APK" ]; then
             echo "Found versioned APK: $VERSIONED_APK"
             cp "$VERSIONED_APK" "VelocityDrive-latest.apk"
@@ -59,7 +59,7 @@ jobs:
             gh release create "$TAG" \
               --title "$TITLE" \
               --generate-notes \
-              ${{ github.event.inputs.prerelease == 'true' && '--prerelease' || '' }}
+              ${{ github.event.inputs.prerelease == 'true' && '--prerelease' || '--latest' }}
             if [ -f "VelocityDrive-latest.apk" ]; then
               gh release upload "$TAG" VelocityDrive*.apk "VelocityDrive-latest.apk" --clobber
             fi

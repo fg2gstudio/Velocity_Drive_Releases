@@ -6,7 +6,7 @@
     enabling the permanent direct download link:
     https://github.com/fg2gstudio/Velocity_Drive_Releases/releases/latest/download/VelocityDrive-latest.apk
 .EXAMPLE
-    .\scripts\publish-release.ps1 -Tag "v5.1.43" -Title "Velocity Drive Alpha v5.1.43 (Build 43)" -ApkPath "VelocityDrive-v5.1-alpha-bv43.apk" -Changelog "- Bug fixes and leaderboard improvements"
+    .\scripts\publish-release.ps1 -Tag "v5.2.44" -Title "Velocity Drive Alpha v5.2.44 (Build 44)" -ApkPath "VelocityDrive-v5.2-alpha-bv44.apk"
     .\scripts\publish-release.ps1 # Automatically detects latest APK in repository root
 #>
 param(
